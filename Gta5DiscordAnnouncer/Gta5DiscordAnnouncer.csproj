@@ -30,9 +30,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CitizenFX.Core">
       <HintPath>..\..\..\..\Documents\programs\fx_script_dlls\CitizenFX.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,12 +54,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="dist\config.json" />
     <None Include="dist\fxmanifest.lua" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy $(TargetPath) "C:\Users\azlee\Documents\VSCode\gta5_server\fivem_server\local_resources\discord_announcer\server" /y
+xcopy "$(TargetDir)Newtonsoft.Json.dll" "C:\Users\azlee\Documents\VSCode\gta5_server\fivem_server\local_resources\discord_announcer/server" /y
 xcopy "$(ProjectDir)dist\fxmanifest.lua" "C:\Users\azlee\Documents\VSCode\gta5_server\fivem_server\local_resources\discord_announcer" /y
+xcopy "$(ProjectDir)dist\config.json" "C:\Users\azlee\Documents\VSCode\gta5_server\fivem_server\local_resources\discord_announcer" /y
+
 </PostBuildEvent>
   </PropertyGroup>
 </Project>
