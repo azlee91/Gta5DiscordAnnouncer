@@ -1,3 +1,4 @@
-﻿{
-    "webhookUrl": ""
+{
+    "WebhookUrl": "",
+    "DebugMode": false
 }
